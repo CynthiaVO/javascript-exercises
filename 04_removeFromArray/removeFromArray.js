@@ -1,24 +1,20 @@
-const removeFromArray = function(arrayToTest,arg) {
-    //step through array items one at a time
-    //match the given argument to be removed
-    if (arrayToTest.includes(arg)){
-        //find the index
-        myIndex = arrayToTest.findIndex(myFunction);
-        function myFunction(value,index,array){
-            return value === arg;
-        }
-        //remove the matching item from the array
-        const resultArray = arrayToTest.toSpliced(myIndex,1 );
-        return resultArray;
-    } 
-    else {
-        return arrayToTest;
-    }
+const removeFromArray = function(arrayToTest, ...args) {
+    args.forEach(arg => {
     
-    
-    //return the altered array
+        if (arrayToTest.includes(arg)){
+           console.log(arg + " is in the array");
+           
+           myIndex = arrayToTest.indexOf(arg);
+           console.log("the index of " + arg + " is " + myIndex);
+           console.log("arrayToTest before splicing: "+ arrayToTest);
+           
+           arrayToTest = arrayToTest.toSpliced(myIndex,1 );
+           console.log("after splicing: " + arrayToTest);
+       } 
+   })
+   return arrayToTest;
 };
-removeFromArray([1,2,3,4],3);
+removeFromArray([1,2,3,4],3,4);
 
 // Do not edit below this line
 module.exports = removeFromArray;
